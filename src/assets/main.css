@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@theme {
+    --font-sans: Roboto, ui-sans-serif, system-ui, sans-serif;
+    --color-brand: #e74c3c;
+    --color-paper: #f5f0e6;
+    --shadow-brutal: 6px 6px 0 #000;
+    --shadow-brutal-sm: 3px 3px 0 #000;
+}
