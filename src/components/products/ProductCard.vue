@@ -7,11 +7,11 @@
         </div>
         <div class="p-4 flex flex-col gap-2 grow">
             <span class="self-start border-2 border-black text-xs font-bold uppercase px-2 py-0.5">{{ product.category
-            }}</span>
+                }}</span>
             <h3 class="text-lg font-black uppercase leading-tight">{{ product.name }}</h3>
             <p class="text-sm font-medium">{{ product.description }}</p>
             <div class="mt-auto pt-3 flex items-center justify-between gap-2">
-                <p class="text-xl font-black">{{ product.price }}
+                <p class="text-xl font-black">${{ product.price }}
                     <span v-if="product.oldPrice" class="text-sm font-bold line-through text-black/50">{{
                         product.oldPrice }}</span>
                 </p>

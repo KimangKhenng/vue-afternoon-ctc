@@ -4,18 +4,17 @@
     <button class="bg-blue-400 p-2 text-white" @click="show = !show">SHow</button>
     <TestCompo /> -->
     <AnnouncementBar />
-    <NavHeader :item-count="itemCount" />
+    <NavHeader :item-count="totalCount" />
     <main id="top">
       <HeroSection />
       <FilterBar />
-      <ProductSection @add="increaseCount" />
-      <CartSection />
+      <ProductSection @add="addToCard" />
+      <CartSection :items="items" @remove-item="removeItem" @clear-item="clearItems" />
       <PerkSection />
       <FaqSection />
       <NewsletterSection />
     </main>
     <FooterSection />
-
   </div>
 </template>
 <script>
@@ -45,12 +44,35 @@ export default {
   data() {
     return {
       show: true,
-      itemCount: 0
+      items: [
+        { name: 'Semicolon Sticker Pack', unitPrice: 4.00, quantity: 2 },
+        { name: 'Git Push Mug', unitPrice: 12.00, quantity: 1 },
+        { name: 'Dark Mode Tee', unitPrice: 22.00, quantity: 1 }
+      ]
+    }
+  },
+  computed: {
+    totalCount() {
+      return this.items.reduce((sum, item) => sum + item.quantity, 0);
     }
   },
   methods: {
-    increaseCount(product) {
-      this.itemCount++
+    addToCard(product) {
+      const existingItem = this.items.find((item) => item.name === product.name)
+      if (existingItem) {
+        existingItem.quantity++
+      } else {
+        this.items.push(
+          { name: product.name, unitPrice: product.price, quantity: 1 }
+        )
+      }
+    },
+    removeItem(item) {
+      const index = this.items.indexOf(item)
+      this.items.splice(index, 1)
+    },
+    clearItems() {
+      this.items = []
     }
   }
 }
