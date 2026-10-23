@@ -1,20 +1,19 @@
 <template>
   <div class="min-h-screen bg-paper text-black font-sans">
-
+    <!-- <LifecycleLogger v-if="show" />
+    <button class="bg-blue-400 p-2 text-white" @click="show = !show">SHow</button>
+    <TestCompo /> -->
     <AnnouncementBar />
-
-    <NavHeader />
-
+    <NavHeader :item-count="itemCount" />
     <main id="top">
       <HeroSection />
       <FilterBar />
-      <ProductSection />
+      <ProductSection @add="increaseCount" />
       <CartSection />
       <PerkSection />
       <FaqSection />
       <NewsletterSection />
     </main>
-
     <FooterSection />
 
   </div>
@@ -41,7 +40,18 @@ export default {
     PerkSection,
     FaqSection,
     NewsletterSection,
-    FooterSection
+    FooterSection,
+  },
+  data() {
+    return {
+      show: true,
+      itemCount: 0
+    }
+  },
+  methods: {
+    increaseCount(product) {
+      this.itemCount++
+    }
   }
 }
 </script>

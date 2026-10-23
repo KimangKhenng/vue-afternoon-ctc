@@ -1,7 +1,7 @@
 <template>
     <section class="max-w-6xl mx-auto px-6 py-6">
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <ProductCard v-for="product in products" :key="product.number" :product="product" />
+            <ProductCard @add="addToCart" v-for="product in products" :key="product.number" :product="product" />
         </div>
 
         <!-- EMPTY STATE (hidden now — show it when a search finds nothing) -->
@@ -63,6 +63,12 @@ export default {
                     badge: { label: 'Sale', class: 'bg-brand text-white border-2 border-black' }
                 }
             ]
+        }
+    },
+    emits: ['add'],
+    methods: {
+        addToCart(product) {
+            this.$emit('add', product)
         }
     }
 }

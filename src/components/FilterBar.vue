@@ -6,7 +6,7 @@
         </div>
 
         <div class="bg-white border-4 border-black shadow-brutal p-4 flex flex-wrap items-center gap-4">
-            <input type="text" placeholder="Search products..."
+            <input ref="input" type="text" placeholder="Search products..."
                 class="flex-1 min-w-48 border-2 border-black bg-paper px-3 py-2 font-bold focus:outline-none focus:bg-white">
 
             <div class="flex flex-wrap gap-2">
@@ -28,6 +28,9 @@ export default {
             categories: ['All', 'Stickers', 'Apparel', 'Desk'],
             activeCategory: 'All'
         }
+    },
+    mounted() {
+        this.$refs.input.focus()
     }
 }
 </script>

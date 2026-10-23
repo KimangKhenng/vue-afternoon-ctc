@@ -12,10 +12,21 @@
                     <a href="#cart"
                         class="px-3 py-2 border-2 border-black bg-brand text-white shadow-brutal-sm flex items-center gap-2">
                         Cart
-                        <span class="bg-white text-black px-2 border-2 border-black">4</span>
+                        <span class="bg-white text-black px-2 border-2 border-black">{{ itemCount }}</span>
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
 </template>
+<script>
+export default {
+    // props: ['itemCount']
+    props: {
+        itemCount: {
+            type: Number,
+            default: 0
+        }
+    }
+}
+</script>
