@@ -6,6 +6,7 @@
     <AnnouncementBar />
     <NavHeader :item-count="totalCount" />
     <main id="top">
+      <CourseSection />
       <HeroSection />
       <FilterBar />
       <ProductSection @add="addToCard" />
@@ -28,6 +29,7 @@ import PerkSection from '@/components/PerkSection.vue'
 import FaqSection from '@/components/FaqSection.vue'
 import NewsletterSection from '@/components/NewsletterSection.vue'
 import FooterSection from '@/components/FooterSection.vue'
+import CourseSection from '@/components/CourseSection.vue'
 export default {
   components: {
     AnnouncementBar,
@@ -40,6 +42,7 @@ export default {
     FaqSection,
     NewsletterSection,
     FooterSection,
+    CourseSection
   },
   data() {
     return {
