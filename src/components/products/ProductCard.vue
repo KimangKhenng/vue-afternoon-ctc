@@ -1,5 +1,5 @@
 <template>
-    <article class="bg-white border-4 border-black shadow-brutal flex flex-col">
+    <article @click="pushProduct" class="bg-white border-4 border-black shadow-brutal flex flex-col cursor-pointer">
         <div class="relative h-36 border-b-4 border-black flex items-end p-3" :class="product.imageClass">
             <span class="text-6xl font-black leading-none">{{ product.number }}</span>
             <span v-if="product.badge" class="absolute top-3 right-3 text-xs font-extrabold uppercase px-2 py-1"
@@ -36,6 +36,9 @@ export default {
     methods: {
         addToCart() {
             this.$emit('add', this.product)
+        },
+        pushProduct() {
+            this.$router.push(`/products/${this.product.number}`)
         }
     }
 }
