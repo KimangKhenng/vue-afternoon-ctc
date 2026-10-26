@@ -9,6 +9,8 @@
             No products match your search.
         </p>
         <button @click="nextPage"> Next page</button>
+        <div v-for="n in totalPages" :key="n">{{ n }}</div>
+        <button @click="nextPage"> Previous page</button>
     </section>
 </template>
 <script>
@@ -19,6 +21,7 @@ export default {
     },
     async created() {
         await this.fetchCourse()
+        console.log(this.public_repos)
     },
     data() {
         return {
@@ -26,15 +29,26 @@ export default {
             error: '',
             loading: false,
             page: 1,
-            items: 10
+            items: 10,
+            pageOption: [5, 10, 20, 50],
+            public_repos: 0
+        }
+    },
+    computed: {
+        totalPages() {
+            return Math.ceil(this.public_repos / this.items)
         }
     },
     methods: {
         async fetchCourse() {
             const api = `https://api.github.com/users/tfd-ed/repos?per_page=${this.items}&page=${this.page}`;
+            const user_api = `https://api.github.com/users/tfd-ed`;
             this.loading = true
             try {
                 const response = await fetch(api)
+                let user = await fetch(user_api)
+                this.public_repos = await user.json()
+                console.log(this.public_repos)
                 this.courses = await response.json()
             } catch (err) {
                 this.error = err.messages

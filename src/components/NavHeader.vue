@@ -1,13 +1,22 @@
 <template>
     <header class="bg-white border-b-4 border-black">
         <nav class="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-            <a href="#top" class="text-2xl font-black uppercase tracking-tight">
+            <RouterLink to="/" class="text-2xl font-black uppercase tracking-tight">
                 Brutal<span class="bg-brand text-white px-2 ml-1 border-2 border-black">Merch</span>
-            </a>
+            </RouterLink>
             <ul class="flex flex-wrap items-center gap-3 text-sm font-extrabold uppercase">
-                <li><a href="#top" class="px-3 py-2 border-2 border-black bg-black text-white">Home</a></li>
-                <li><a href="#products" class="px-3 py-2 border-2 border-transparent hover:border-black">Shop</a></li>
-                <li><a href="#about" class="px-3 py-2 border-2 border-transparent hover:border-black">About</a></li>
+                <li>
+                    <RouterLink to="/" class="px-3 py-2 border-2 border-transparent hover:border-black ">Home
+                    </RouterLink>
+                </li>
+                <li>
+                    <RouterLink to="/shop" class="px-3 py-2 border-2 border-transparent hover:border-black">Shop
+                    </RouterLink>
+                </li>
+                <li>
+                    <RouterLink to="/about" class="px-3 py-2 border-2 border-transparent hover:border-black">About
+                    </RouterLink>
+                </li>
                 <li>
                     <a href="#cart"
                         class="px-3 py-2 border-2 border-black bg-brand text-white shadow-brutal-sm flex items-center gap-2">
