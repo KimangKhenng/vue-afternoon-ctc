@@ -1,12 +1,8 @@
 import { defineStore } from "pinia";
 
-export const useCartStore = defineStore('cart', {
+export const useCartStore = defineStore('carts', {
     state: () => ({
-        items: [
-            { id: 1, name: 'Semicolon Sticker Pack', unitPrice: 4.00, quantity: 3 },
-            { id: 2, name: 'Git Push Mug', unitPrice: 12.00, quantity: 1 },
-            { id: 3, name: 'Dark Mode Tee', unitPrice: 22.00, quantity: 1 }
-        ]
+        items: []
     }),
     getters: {
         count: (state) => state.items.reduce((sum, item) => sum + item.quantity, 0),

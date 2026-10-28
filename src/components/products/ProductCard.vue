@@ -22,7 +22,7 @@
                     </button>
                     <button v-if="product.soldOut" disabled
                         class="border-2 border-black bg-paper text-black/40 px-3 py-2 text-xs font-extrabold uppercase cursor-not-allowed">Add</button>
-                    <button @click="addToCart" v-else
+                    <button @click="addToCart(product)" v-else
                         class="border-2 border-black bg-brand text-white shadow-brutal-sm px-3 py-2 text-xs font-extrabold uppercase cursor-pointer hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">Add</button>
                 </div>
             </div>
@@ -30,13 +30,16 @@
     </article>
 </template>
 <script>
+import { mapActions } from 'pinia';
+import { useCartStore } from '@/stores/cart';
 export default {
     props: ['product'],
     emits: ['add'],
     methods: {
-        addToCart() {
-            this.$emit('add', this.product)
-        },
+        // addToCart() {
+        //     this.$emit('add', this.product)
+        // },
+        ...mapActions(useCartStore, { addToCart: 'add' })
     }
 }
 </script>
