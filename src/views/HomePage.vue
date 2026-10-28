@@ -2,8 +2,8 @@
     <!-- <CourseSection /> -->
     <HeroSection />
     <FilterBar />
-    <ProductSection @add="addToCard" />
-    <CartSection :items="items" @remove-item="removeItem" @clear-item="clearItems" />
+    <ProductSection />
+    <CartSection />
     <PerkSection />
     <FaqSection />
     <NewsletterSection />
@@ -16,8 +16,6 @@ import CartSection from '@/components/CartSection.vue'
 import PerkSection from '@/components/PerkSection.vue'
 import FaqSection from '@/components/FaqSection.vue'
 import NewsletterSection from '@/components/NewsletterSection.vue'
-import FooterSection from '@/components/FooterSection.vue'
-import CourseSection from '@/components/CourseSection.vue'
 export default {
     components: {
         HeroSection,
@@ -27,22 +25,6 @@ export default {
         PerkSection,
         FaqSection,
         NewsletterSection,
-        CourseSection
-    },
-    data() {
-        return {
-            show: true,
-            items: [
-                { name: 'Semicolon Sticker Pack', unitPrice: 4.00, quantity: 2 },
-                { name: 'Git Push Mug', unitPrice: 12.00, quantity: 1 },
-                { name: 'Dark Mode Tee', unitPrice: 22.00, quantity: 1 }
-            ]
-        }
-    },
-    computed: {
-        totalCount() {
-            return this.items.reduce((sum, item) => sum + item.quantity, 0);
-        }
     },
     methods: {
         addToCard(product) {

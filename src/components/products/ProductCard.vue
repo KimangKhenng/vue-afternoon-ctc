@@ -1,5 +1,5 @@
 <template>
-    <article @click="pushProduct" class="bg-white border-4 border-black shadow-brutal flex flex-col cursor-pointer">
+    <article class="bg-white border-4 border-black shadow-brutal flex flex-col cursor-pointer">
         <div class="relative h-36 border-b-4 border-black flex items-end p-3" :class="product.imageClass">
             <span class="text-6xl font-black leading-none">{{ product.number }}</span>
             <span v-if="product.badge" class="absolute top-3 right-3 text-xs font-extrabold uppercase px-2 py-1"
@@ -7,7 +7,7 @@
         </div>
         <div class="p-4 flex flex-col gap-2 grow">
             <span class="self-start border-2 border-black text-xs font-bold uppercase px-2 py-0.5">{{ product.category
-                }}</span>
+            }}</span>
             <h3 class="text-lg font-black uppercase leading-tight">{{ product.name }}</h3>
             <p class="text-sm font-medium">{{ product.description }}</p>
             <div class="mt-auto pt-3 flex items-center justify-between gap-2">
@@ -37,9 +37,6 @@ export default {
         addToCart() {
             this.$emit('add', this.product)
         },
-        pushProduct() {
-            this.$router.push(`/products/${this.product.number}`)
-        }
     }
 }
 </script>

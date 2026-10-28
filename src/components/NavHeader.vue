@@ -29,13 +29,11 @@
     </header>
 </template>
 <script>
+import { mapState } from 'pinia';
+import { useCartStore } from '@/stores/cart';
 export default {
-    // props: ['itemCount']
-    props: {
-        itemCount: {
-            type: Number,
-            default: 0
-        }
+    computed: {
+        ...mapState(useCartStore, { itemCount: 'count' })
     }
 }
 </script>
