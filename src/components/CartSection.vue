@@ -7,7 +7,7 @@
 
         <div class="bg-white border-4 border-black shadow-brutal p-5">
             <ul class="space-y-3">
-                <CartItem @remove="removeItem" v-for="item in items" :key="item.name" :item="item" />
+                <CartItem v-for="item in items" :key="item.name" :item="item" />
             </ul>
 
             <!-- EMPTY CART (hidden now — show it when the cart has no rows) -->
@@ -29,27 +29,18 @@
 </template>
 <script>
 import CartItem from '@/components/cart/CartItem.vue';
+import { mapState, mapActions } from "pinia";
+import { useCartStore } from '@/stores/cart';
 export default {
     components: {
         CartItem
     },
-    props: ['items'],
-    emits: ['removeItem', 'clearItem'],
     methods: {
-        removeItem(item) {
-            this.$emit('removeItem', item)
-        },
-        clearItems() {
-            this.$emit('clearItem')
-        }
+        ...mapActions(useCartStore, { clearItems: 'clear' })
     },
     computed: {
-        total() {
-            return this.items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0).toFixed(2);
-        },
-        itemsCount() {
-            return this.items.reduce((sum, item) => sum + item.quantity, 0);
-        }
+        // ...mapState(useCartStore, ["items", "total", "count"])
+        ...mapState(useCartStore, { items: "items", total: "total", itemsCount: "count" })
     }
 }
 </script>

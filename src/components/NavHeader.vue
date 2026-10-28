@@ -1,7 +1,7 @@
 <template>
     <header class="bg-white border-b-4 border-black">
         <nav class="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-            <RouterLink to="/" class="text-2xl font-black uppercase tracking-tight">
+            <RouterLink activeClass="" exactActiveClass="" to="/" class="text-2xl font-black uppercase tracking-tight">
                 Brutal<span class="bg-brand text-white px-2 ml-1 border-2 border-black">Merch</span>
             </RouterLink>
             <ul class="flex flex-wrap items-center gap-3 text-sm font-extrabold uppercase">
